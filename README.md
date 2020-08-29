@@ -2,6 +2,9 @@
 ## Description
 This will be a completed setup of a Express project that I will be able to use to begin future projects
 ## Work Logs
+### Aug 29, 2020
+- Successfully integrated a User route that allows for new User documents to be created in my database
+    - Route contains a middleware that validates the data being passed into the request body and if there are any errors found to then pass a response with an error status, otherwise continue onto the final method and use Mongos' create method to store a new User doc within the Users collection of the database with the request body
 ### Aug 28, 2020
 - Did quite a bit but didn't complete a lot of it at the moment
     - I did complete the User Model which contains email, username, and password properties with their own types of validation and requirements

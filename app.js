@@ -10,6 +10,10 @@ const port = process.env.PORT || 5000;
 // mongo db connection function file
 const connectDB = require("./dbConnect.js");
 
+// neccessary middleware for routes through app
+app.use(morgan("dev"));
+app.use(express.json());
+
 // static file serving
 app.use(express.static("static"));
 
@@ -17,9 +21,8 @@ app.use(express.static("static"));
 const homeRouter = require("./routes/homeRouter");
 app.use("/", homeRouter);
 
-// neccessary middleware for routes through app
-app.use(morgan("dev"));
-app.use(express.json());
+const userRouter = require("./routes/userRouter");
+app.use("/user", userRouter);
 
 // calling function retrieved from dbConnect to connect to my database
 connectDB();
