@@ -37,7 +37,7 @@ const User_Schema = new Schema({
             const lowercasePass = lowercase.test(value);
             const uppercase = /[A-Z]/g;
             const uppercasePass = uppercase.test(value);
-            const special = /[\*\.! @#\$%\^&\(\)\{\}\[\]:;<>,.\?~_\+-=\|\\\/]/g;
+            const special = /[*\.!\s@#$%\^&(){}\[\]:;<>,.?~_+-=|\\\/]/g;
             const specialPass = special.test(value);
 
             if (digitPass !== true || lowercasePass !== true || uppercasePass !== true || specialPass !== true) {
