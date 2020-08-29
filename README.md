@@ -2,6 +2,14 @@
 ## Description
 This will be a completed setup of a Express project that I will be able to use to begin future projects
 ## Work Logs
+### Aug 28, 2020
+- Did quite a bit but didn't complete a lot of it at the moment
+    - I did complete the User Model which contains email, username, and password properties with their own types of validation and requirements
+    - Began the creation of a userRouter which will handle requests made to the path /user
+        - In the middle of creating a route for creating a new user / user sign up
+    - I'm almost finished with a middleware file that will be used to validate user data from the request
+        - It santizies the data and either lets all the data pass through to the final method of the request or creates errors and passes those and fails the request
+    - Created a simple newError utility so I can create my own error messages with status codes
 ### Aug 27, 2020
 - Created Home router to handle requests
     - Declared a router variable as a new instance of the Express Router Interface
