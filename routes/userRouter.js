@@ -1,5 +1,6 @@
 // require needed packages
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
 
 // needed Models
 const User = require("../models/User");
@@ -7,15 +8,18 @@ const User = require("../models/User");
 // declare middlewares
 const validateUser = require("../middleware/validateUser");
 
-// route handling
+// ROUTE HANDLING
 
 // @desc create new user, stores in Users collection in DB
-// @path (server origin)/user/new
+// @path POST - (server origin)/user/register
 // @access public
 router.post(
-    "/new",
+    "/register",
     validateUser,
     async(req, res) => {
+
+        // password encrpytion
+        req.body.password = await bcrypt.hash(req.body.password, 10);
 
         try {
 
@@ -37,6 +41,6 @@ router.post(
         }
 
     }
-)
+);
 
 module.exports = router;
