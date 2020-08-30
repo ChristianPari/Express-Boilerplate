@@ -6,6 +6,16 @@ const validator = require("validator");
 
 // create schema by declaring a variable a new insatnce of schema
 const User_Schema = new Schema({
+    permissions: {
+        admin: {
+            type: Boolean,
+            default: false
+        },
+        authority: {
+            type: Number,
+            default: 0
+        }
+    },
     email: {
         required: true,
         type: String,
