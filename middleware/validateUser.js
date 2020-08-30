@@ -56,28 +56,24 @@ module.exports = async(req, res, next) => {
 
     const digit = /[0-9]/g;
     const digitPass = digit.test(password);
-    // failed += checkPassed("digit", digitPass);
     if (!digitPass) {
         failed.push("Must contain a digit.")
     }
 
     const lowercase = /[a-z]/g;
     const lowercasePass = lowercase.test(password);
-    // failed += checkPassed("lowercase", lowercasePass);
     if (!lowercasePass) {
         failed.push("Must contain a lowercase letter.")
     }
 
     const uppercase = /[A-Z]/g;
     const uppercasePass = uppercase.test(password);
-    // failed += checkPassed("uppercase", uppercasePass);
     if (!uppercasePass) {
         failed.push("Must contain a uppercase letter.")
     }
 
     const special = /[*\.!\s@#$%\^&(){}\[\]:;<>,.?~_+-=|\\\/]/g;
     const specialPass = special.test(password);
-    // failed += checkPassed("special", specialPass);
     if (!specialPass) {
         failed.push("Must contain a special character.")
     }
@@ -103,10 +99,3 @@ module.exports = async(req, res, next) => {
     } else next()
 
 }
-
-// function to create errors for password validation
-// function checkPassed(type, test) {
-
-//     if (!test) return `Must contain a ${type}.`
-
-// }
