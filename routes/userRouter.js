@@ -1,12 +1,17 @@
 // require needed packages
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+// env Variables
+const secret = process.env.SECRET;
 
 // needed Models
 const User = require("../models/User");
 
 // declare middlewares
 const validateUser = require("../middleware/validateUser");
+const checkLogin = require("../middleware/checkLogin");
 
 // ROUTE HANDLING
 
@@ -42,5 +47,36 @@ router.post(
 
     }
 );
+
+// @desc user login route
+// @path PUT - (server origin)/user/login
+// @access public
+router.put(
+    "/login",
+    checkLogin,
+    (req, res) => {
+
+        try {
+
+            const token = jwt.sign({ id: req.id, permissions: req.perms }, secret, { "expiresIn": "1min" });
+
+            return res.status(200).json({
+                status: 200,
+                msg: "Succesful Login",
+                user_token: token
+            });
+
+        } catch (err) {
+
+            return res.status(500).json({
+                status: 500,
+                msg: err.message || err
+            });
+
+        }
+
+    }
+)
+
 
 module.exports = router;
