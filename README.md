@@ -2,6 +2,13 @@
 ## Description
 This will be a completed setup of a Express project that I will be able to use to begin future projects
 ## Work Logs
+### Aug 30, 2020
+- Installed Bcrypt package to implement password encryption for when a new user document in created
+    - Implemented this into the register route so when a user signs up for an account their password is encrypted when passed into the document data of the DB
+- Added a "permissions" property to my User Model so that I could implement admin privileges
+- Created a Login route within my User route
+    - Created a middleware that verifys that the data being passed into the request body is that of a valid user from the DB and if not returns an error of "failed login"
+    - When it is a valid user, they are "logged in" and a JWT (which I installed just prior to this) is created so that the user information can be translated to other paths of the server and site
 ### Aug 29, 2020
 - Successfully integrated a User route that allows for new User documents to be created in my database
     - Route contains a middleware that validates the data being passed into the request body and if there are any errors found to then pass a response with an error status, otherwise continue onto the final method and use Mongos' create method to store a new User doc within the Users collection of the database with the request body
