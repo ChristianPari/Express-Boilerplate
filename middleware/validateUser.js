@@ -1,3 +1,11 @@
+/* MIDDLEWARE DESCRIPTION
+
+ * this middlware is used to validate the data that a user is entering to register for an account
+ * if data doesn't meet requirements the server responds with a 500 and field error information
+ * if all data passes requirements then the data is left alone and this middleware just passes into the next method 
+
+*/
+
 // packages
 const { isEmail, isLength } = require("validator");
 
@@ -96,6 +104,6 @@ module.exports = async(req, res, next) => {
             validationErr: failedFeilds
         })
 
-    } else next()
+    } else next();
 
 }
