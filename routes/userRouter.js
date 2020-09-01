@@ -58,7 +58,7 @@ router.put(
 
         try {
 
-            const token = jwt.sign({ id: req.id, permissions: req.perms }, secret, { "expiresIn": "1min" });
+            const token = jwt.sign({ id: req.id }, secret, { "expiresIn": "1min" });
 
             return res.status(200).json({
                 status: 200,

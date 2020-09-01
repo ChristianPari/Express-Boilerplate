@@ -55,7 +55,6 @@ module.exports = async(req, res, next) => {
 
     // assigning data from the user to the request so that it can be included in the JWT payload created in the next method
     req.id = user._id;
-    req.perms = user.permissions.authority;
 
     next();
 
