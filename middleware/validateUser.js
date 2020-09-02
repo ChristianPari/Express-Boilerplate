@@ -33,7 +33,7 @@ module.exports = async(req, res, next) => {
     }
 
     // checking to see if the email is already in use
-    const activeEmail = await User.findOne({ "email": email }) === null ? false : true;
+    const activeEmail = await User.findOne({ "email": email.toLowerCase() }) === null ? false : true;
 
     if (activeEmail) {
         failedFeilds["email"] = "Email already in use."
@@ -47,7 +47,7 @@ module.exports = async(req, res, next) => {
     }
 
     // checking if username is already taken
-    const activeUsername = await User.findOne({ "username": username }) === null ? false : true;
+    const activeUsername = await User.findOne({ "username": username.toLowercase() }) === null ? false : true;
 
     if (activeUsername) {
         failedFeilds["username"] = "Username already in use."

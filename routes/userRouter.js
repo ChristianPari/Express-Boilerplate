@@ -26,9 +26,15 @@ router.post(
         // password encrpytion
         req.body.password = await bcrypt.hash(req.body.password, 10);
 
+        const reqBody = {
+            "email": req.body.email.toLowerCase(),
+            "username": req.body.username.toLowerCase(),
+            "password": req.body.password
+        };
+
         try {
 
-            const newUser = await User.create(req.body);
+            const newUser = await User.create(reqBody);
 
             return res.status(201).json({
                 status: 201,
