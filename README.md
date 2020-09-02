@@ -2,6 +2,16 @@
 ## Description
 This will be a completed setup of a Express project that I will be able to use to begin future projects
 ## Work Logs
+### Sept 2, 2020
+- Created new middlewares that handle:
+    - Extraction of JWT from cookies
+        - This validates that there is a token and if so decodes it
+    - Authenticating Users
+        - Checks if the decoded data from the token matches any users within the database, else returns error
+    - Authenticating Admin Capabilities
+        - Using the data from the User Authentication, checks if the Users' permissions
+### Sept 1, 2020
+- Updated a few files and cleaned some code, nothing major
 ### Aug 30, 2020
 - Installed Bcrypt package to implement password encryption for when a new user document in created
     - Implemented this into the register route so when a user signs up for an account their password is encrypted when passed into the document data of the DB
